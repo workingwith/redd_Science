@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Katipunan &amp; the Philippine Revolution — Reviewer &amp; Quiz</title>
+<style>
+  :root{
+    --paper:#efe3c8;
+    --paper-2:#e6d5ab;
+    --paper-3:#f6eeda;
+    --ink:#2b2013;
+    --ink-soft:#5a4a30;
+    --maroon:#7a1f2b;
+    --maroon-dark:#551017;
+    --gold:#b8892b;
+    --gold-light:#dcb96b;
+    --green-ok:#3f7d4f;
+    --red-no:#b23a2e;
+    --card-border:#c9b787;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    line-height:1.55;
+  }
+  h1,h2,h3{
+    font-family:Georgia,"Iowan Old Style","Palatino Linotype","Book Antiqua",serif;
+    color:var(--maroon-dark);
+    margin:0 0 .5rem;
+  }
+  a{color:var(--maroon-dark);}
+  .wrap{max-width:820px;margin:0 auto;padding:0 1.25rem 4rem;}
+
+  /* Masthead */
+  .masthead{
+    background:linear-gradient(180deg,var(--maroon) 0%,var(--maroon-dark) 100%);
+    color:var(--paper-3);
+    padding:2.75rem 1.25rem 2.25rem;
+    text-align:center;
+    border-bottom:6px solid var(--gold);
+  }
+  .seal{
+    width:64px;height:64px;margin:0 auto 1rem;border-radius:50%;
+    background:conic-gradient(from 0deg,var(--gold-light) 0deg 20deg,transparent 20deg 40deg,var(--gold-light) 40deg 60deg,transparent 60deg 80deg,var(--gold-light) 80deg 100deg,transparent 100deg 120deg,var(--gold-light) 120deg 140deg,transparent 140deg 160deg,var(--gold-light) 160deg 180deg,transparent 180deg 200deg,var(--gold-light) 200deg 220deg,transparent 220deg 240deg,var(--gold-light) 240deg 260deg,transparent 260deg 280deg,var(--gold-light) 280deg 300deg,transparent 300deg 320deg,var(--gold-light) 320deg 340deg,transparent 340deg 360deg);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 0 0 3px var(--gold-light) inset;
+  }
+  .seal span{
+    display:block;width:38px;height:38px;border-radius:50%;
+    background:var(--maroon-dark);color:var(--gold-light);
+    font-family:Georgia,serif;font-weight:bold;font-size:.85rem;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .masthead h1{color:var(--paper-3);font-size:1.7rem;max-width:600px;margin:0 auto .4rem;}
+  .masthead p{margin:0;color:var(--gold-light);font-size:.95rem;letter-spacing:.02em;}
+
+  /* Tabs */
+  .tabs{
+    display:flex;justify-content:center;gap:.5rem;
+    background:var(--paper-2);
+    border-bottom:1px solid var(--card-border);
+    padding:.75rem 1rem;
+    position:sticky;top:0;z-index:5;
+  }
+  .tab-btn{
+    font-family:Georgia,serif;font-size:1rem;
+    background:none;border:none;color:var(--ink-soft);
+    padding:.5rem 1.1rem;cursor:pointer;border-bottom:3px solid transparent;
+  }
+  .tab-btn.active{color:var(--maroon-dark);border-bottom-color:var(--gold);font-weight:bold;}
+  .tab-btn:focus-visible{outline:2px solid var(--maroon);outline-offset:2px;}
+
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;}
+
+  /* Reviewer */
+  .lesson-card{
+    background:var(--paper-3);
+    border:1px solid var(--card-border);
+    padding:1.5rem 1.75rem;
+    margin-top:2rem;
+    border-radius:3px;
+  }
+  .lesson-card h2{font-size:1.35rem;}
+  .lesson-card table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem;}
+  .lesson-card th,.lesson-card td{
+    text-align:left;padding:.5rem .6rem;border:1px solid var(--card-border);
+    vertical-align:top;
+  }
+  .lesson-card th{background:var(--paper-2);}
+  .lesson-card ul,.lesson-card ol{padding-left:1.3rem;}
+  .lesson-card li{margin-bottom:.35rem;}
+  .divider{border:none;border-top:3px double var(--gold);margin:2.5rem 0;}
+
+  /* Quiz */
+  .quiz-intro{margin-top:2rem;}
+  .quiz-intro label{font-size:1.05rem;font-weight:bold;}
+  .quiz-intro input[type=text]{
+    display:block;margin-top:.4rem;width:100%;max-width:360px;
+    padding:.5rem .6rem;border:1px solid var(--card-border);
+    background:var(--paper-3);font-size:1rem;border-radius:2px;
+  }
+  .part-heading{margin-top:2.5rem;display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap;}
+  .part-heading .pts{font-family:system-ui,sans-serif;font-size:.9rem;color:var(--ink-soft);font-weight:normal;}
+  .instructions{color:var(--ink-soft);font-size:.95rem;margin-top:-.3rem;margin-bottom:1.25rem;}
+
+  .q-card{
+    background:var(--paper-3);
+    border:1px solid var(--card-border);
+    border-left:4px solid var(--maroon);
+    padding:1rem 1.25rem;
+    margin-bottom:1.1rem;
+    border-radius:2px;
+  }
+  .q-text{margin:0 0 .7rem;font-size:1rem;}
+  .options{display:flex;flex-direction:column;gap:.3rem;}
+  .option{
+    display:flex;align-items:center;gap:.6rem;
+    padding:.45rem .6rem;border:1px solid transparent;border-radius:2px;cursor:pointer;
+  }
+  .option:hover{background:rgba(122,31,43,0.07);}
+  .option input[type=radio]{accent-color:var(--maroon);width:1.05rem;height:1.05rem;flex:none;}
+  .option.correct{background:rgba(63,125,79,.15);border-color:var(--green-ok);}
+  .option.incorrect{background:rgba(178,58,46,.13);border-color:var(--red-no);}
+  .feedback{margin:.6rem 0 0;font-weight:bold;font-size:.9rem;}
+  .feedback.correct-text{color:var(--green-ok);}
+  .feedback.incorrect-text{color:var(--red-no);}
+
+  .sa-textarea{
+    width:100%;border:1px solid var(--card-border);
+    background:repeating-linear-gradient(white 0px,white 27px,#d8c89c 28px);
+    line-height:28px;padding:2px .6rem 0;font-family:inherit;font-size:1rem;
+    resize:vertical;color:var(--ink);
+  }
+  .sample-answer{
+    margin:.7rem 0 0;padding:.6rem .8rem;background:var(--paper-2);
+    border-left:3px solid var(--gold);font-size:.92rem;border-radius:2px;
+  }
+
+  .actions{display:flex;gap:.75rem;margin:2rem 0;flex-wrap:wrap;}
+  button.primary,button.secondary{
+    font-family:Georgia,serif;font-size:1rem;padding:.75rem 1.5rem;
+    border:none;border-radius:3px;cursor:pointer;
+  }
+  button.primary{background:var(--maroon);color:var(--paper-3);box-shadow:0 2px 0 var(--maroon-dark);}
+  button.primary:hover{background:var(--maroon-dark);}
+  button.secondary{background:transparent;color:var(--maroon-dark);border:1px solid var(--card-border);}
+  button.secondary:hover{background:var(--paper-2);}
+  button:focus-visible{outline:2px solid var(--maroon-dark);outline-offset:2px;}
+
+  .results{
+    margin-top:1rem;padding:1.5rem;background:var(--paper-2);
+    border:1px solid var(--card-border);border-radius:3px;text-align:center;
+  }
+  .score-big{font-family:Georgia,serif;font-size:2.6rem;color:var(--maroon-dark);margin:0;}
+  .sa-note{font-size:.9rem;color:var(--ink-soft);max-width:480px;margin:.75rem auto 0;}
+
+  footer{text-align:center;color:var(--ink-soft);font-size:.85rem;padding:2rem 1rem;}
+
+  @media print{
+    .tabs, .actions, header .seal{display:none;}
+    .tab-panel{display:block !important;}
+    body{background:white;}
+  }
+</style>
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="seal"><span>KKK</span></div>
+    <h1>The Katipunan &amp; the Philippine Revolution</h1>
+    <p>Araling Panlipunan 6 · Reviewer and 45-Item Quiz</p>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="reviewer">Reviewer</button>
+    <button class="tab-btn" data-tab="quiz">Take the Quiz</button>
+  </nav>
+
+  <div class="wrap">
+    <section id="reviewer" class="tab-panel active">
+
+      <div class="lesson-card">
+        <h2>Lesson 1 — The Katipunan</h2>
+        <p><strong>Founding.</strong> Andres Bonifacio founded the Katipunan on July 7, 1892, after the exile of Jose Rizal convinced him that peaceful reform had failed. Its goal was complete, absolute independence from Spain through armed revolution.</p>
+
+        <p><strong>Key leaders.</strong></p>
+        <ol>
+          <li>Andres Bonifacio — founder and Supremo (leader) of the Katipunan</li>
+          <li>Emilio Jacinto — called the "Brains of the Katipunan"; wrote the Kartilya, its code of conduct</li>
+          <li>Pio Valenzuela — a key member who later met with Rizal in Dapitan</li>
+        </ol>
+
+        <p><strong>The four governing councils.</strong></p>
+        <table>
+          <tr><th>Council</th><th>Level it governed</th></tr>
+          <tr><td>Kataas-taasang Sanggunian (Supreme Council)</td><td>The entire Katipunan — its highest authority</td></tr>
+          <tr><td>Sangguniang Bayan (Popular Council)</td><td>A single town or municipality</td></tr>
+          <tr><td>Sangguniang Balangay (Provincial Council)</td><td>An entire province</td></tr>
+          <tr><td>Secret Council</td><td>Bonifacio, Jacinto, and Valenzuela; acted as judges over members who broke the rules</td></tr>
+        </table>
+
+        <p><strong>Membership ranks, lowest to highest.</strong></p>
+        <ol>
+          <li>Katipon — password: "Anak ng Bayan"</li>
+          <li>Kawal (soldier) — reached by recruiting new members</li>
+          <li>Bayani (patriot) — the highest rank</li>
+        </ol>
+
+        <p><strong>Protecting the members.</strong></p>
+        <ul>
+          <li><strong>Triangular Method:</strong> each member knew only two others, so the Spanish could not uncover the whole network if one member was caught.</li>
+          <li><strong>Blood Compact:</strong> a new member signed his name in his own blood as a symbol of total loyalty.</li>
+        </ul>
+
+        <p><strong>The Katipuneras (women members).</strong> Gregoria de Jesus, Marina Dizon, Josefa Rizal, and Trinidad Rizal were among the first women to join. They kept documents and secrets safe, helped recruit members, organized meetings disguised as social gatherings, and smuggled important documents.</p>
+
+        <p><strong>Kalayaan.</strong> The official newspaper of the Katipunan. Its writers used pen names so the Spaniards could not identify them.</p>
+
+        <p><strong>Core values expected of members:</strong> loyalty, unity, responsibility, and love of country.</p>
+      </div>
+
+      <hr class="divider">
+
+      <div class="lesson-card">
+        <h2>Lesson 2 — The Philippine Revolution Against Spain</h2>
+        <p><strong>Rizal vs. Bonifacio.</strong> Jose Rizal favored preparation and gradual reform, while Andres Bonifacio believed the time for reform had passed and pushed for immediate armed revolution.</p>
+
+        <p><strong>Timeline of events.</strong></p>
+        <table>
+          <tr><th>Date</th><th>Event</th></tr>
+          <tr><td>Aug 19, 1896</td><td>The Katipunan is discovered by Spanish authorities, forcing the movement into the open</td></tr>
+          <tr><td>Aug 21, 1896</td><td>Katipuneros move to and stay at the house of Apolonio Samson in Kangkong</td></tr>
+          <tr><td>Aug 23, 1896</td><td>Cry of Pugad Lawin — at the house of Juan Ramos, Katipuneros tear up their cedulas as an act of defiance, formally starting the armed revolution</td></tr>
+          <tr><td>1896</td><td>Pio Valenzuela travels to Dapitan to inform Rizal of the Katipunan's plans and ask his advice</td></tr>
+          <tr><td>Dec 30, 1896</td><td>Jose Rizal is executed; his death strengthens Filipino anger and inspires more support for the revolution</td></tr>
+          <tr><td>March 1897</td><td>Tejeros Convention — held to organize the revolutionary government; Emilio Aguinaldo is elected president</td></tr>
+          <tr><td>1897</td><td>Pact of Biak-na-Bato is concluded</td></tr>
+        </table>
+
+        <p><strong>The Cavite problem: Magdalo vs. Magdiwang.</strong> The revolution in Cavite split into two rival factions — Magdalo (associated with Emilio Aguinaldo) and Magdiwang (associated with Mariano Álvarez). Their disagreement over leadership and authority divided the revolutionaries.</p>
+
+        <p><strong>Republic of Biak-na-Bato.</strong> A revolutionary government established during the struggle against Spain; it led to the Pact of Biak-na-Bato, a truce with the Spanish colonial government.</p>
+
+        <p><strong>Correct sequence to remember:</strong> Cry of Pugad Lawin → Rizal's execution → Tejeros Convention → Pact of Biak-na-Bato.</p>
+      </div>
+
+      <hr class="divider">
+
+      <div class="lesson-card">
+        <h2>Lesson 3 — The End of Spanish Colonialism in the Philippines</h2>
+        <p><strong>Background.</strong> By 1898, Spain was also at war with the United States (the Spanish-American War). Emilio Aguinaldo, who had been in exile in Hong Kong after the Pact of Biak-na-Bato, returned to the Philippines with American support to continue the revolution against Spain.</p>
+
+        <p><strong>Battle of Manila Bay (May 1, 1898).</strong> Commodore George Dewey led the American fleet to a decisive victory over the Spanish fleet in Manila Bay, crippling Spain's naval power in the Philippines.</p>
+
+        <p><strong>Declaration of Philippine Independence (June 12, 1898).</strong> At Aguinaldo's home in Kawit, Cavite, the Philippines declared independence from Spain. The Philippine flag was waved publicly for the first time, and the Marcha Nacional Filipina (our national anthem, composed by Julian Felipe) was played publicly for the first time. Ambrosio Rianzares Bautista read the Act of the Declaration of Independence.</p>
+
+        <p><strong>Malolos Congress and Constitution.</strong> A congress of Filipino representatives convened in Malolos, Bulacan in September 1898 to draft a constitution. The Malolos Constitution, approved in January 1899, was the first republican constitution in Asia, and it established the First Philippine Republic, with Emilio Aguinaldo as its first president.</p>
+
+        <p><strong>The Mock Battle of Manila (August 13, 1898).</strong> The United States and Spain secretly agreed to stage a battle so that Spain could surrender to the Americans instead of to the Filipino revolutionaries, preserving Spanish honor. Filipino forces were kept out of the city.</p>
+
+        <p><strong>Treaty of Paris (December 10, 1898).</strong> Spain and the United States signed the Treaty of Paris, ending the Spanish-American War. Spain ceded the Philippines, along with Puerto Rico and Guam, to the United States, and was paid $20 million for the Philippines. This treaty formally ended over 300 years of Spanish colonial rule in the Philippines (1565–1898) — though Filipinos had no part in the negotiations that decided their country's future.</p>
+      </div>
+
+    </section>
+
+    <section id="quiz" class="tab-panel">
+      <div class="quiz-intro">
+        <label for="studentName">Name:</label>
+        <input type="text" id="studentName" placeholder="Write your name here">
+      </div>
+
+      <h2 class="part-heading">Part I — Multiple Choice <span class="pts">(30 points)</span></h2>
+      <p class="instructions">Choose the letter of the correct answer.</p>
+      <div id="mcContainer"></div>
+
+      <h2 class="part-heading">Part II — Short Answer <span class="pts">(15 points)</span></h2>
+      <p class="instructions">Write your answer in the space provided. When you check your answers, a suggested answer will appear so you or an adult can compare it with yours.</p>
+      <div id="saContainer"></div>
+
+      <div class="actions">
+        <button class="primary" id="submitBtn">Check My Answers</button>
+        <button class="secondary" id="resetBtn">Reset Quiz</button>
+      </div>
+
+      <div id="results" class="results" hidden>
+        <div id="scoreSummary"></div>
+      </div>
+    </section>
+  </div>
+
+  <footer>Made for review and practice — not an official school quiz.</footer>
+
+<script>
+  const mcQuestions = [
+    {q:"In what year and month was the Katipunan founded?", options:["June 1892","July 1892","August 1892","December 1892"], correct:1},
+    {q:"Who was the founder and first Supremo of the Katipunan?", options:["Jose Rizal","Emilio Aguinaldo","Andres Bonifacio","Emilio Jacinto"], correct:2},
+    {q:"What was the ultimate goal of the Katipunan?", options:["Complete independence from Spain","Reform of the Spanish government","Better treatment of friars","Alliance with Spain"], correct:0},
+    {q:'Which Katipunan leader was called the "Brains of the Katipunan"?', options:["Andres Bonifacio","Emilio Jacinto","Pio Valenzuela","Deodato Arellano"], correct:1},
+    {q:"Which council of the Katipunan held the highest authority over the whole organization?", options:["Popular Council","Provincial Council","Secret Council","Kataas-taasang Sanggunian (Supreme Council)"], correct:3},
+    {q:"What was the main role of the Secret Council within the Katipunan?", options:["To recruit new members only","To act as judges over members who broke the rules","To print the Kalayaan newspaper","To lead the Spanish government"], correct:1},
+    {q:"Which of the following correctly orders the Katipunan ranks from lowest to highest?", options:["Bayani, Kawal, Katipon","Kawal, Katipon, Bayani","Katipon, Kawal, Bayani","Katipon, Bayani, Kawal"], correct:2},
+    {q:"What method did the Katipunan use to protect the identities of its members during recruitment?", options:["Public Registration","Triangular Method","Open Membership","Provincial Election"], correct:1},
+    {q:"What did new members use to sign their names when joining the Katipunan, as a symbol of commitment?", options:["Ink","Their own blood","Charcoal","Tree sap"], correct:1},
+    {q:"What was the name of the Katipunan's official newspaper?", options:["La Solidaridad","Kalayaan","El Filibusterismo","Noli Me Tangere"], correct:1},
+    {q:"What event in August 1896 marked the beginning of the open, armed phase of the revolution?", options:["The Tejeros Convention","The discovery of the Katipunan by Spanish authorities","The Pact of Biak-na-Bato","The execution of Rizal"], correct:1},
+    {q:"How did Bonifacio's view on achieving independence differ from Rizal's?", options:["Bonifacio wanted armed revolution; Rizal wanted reform and preparation","Bonifacio wanted reform; Rizal wanted armed revolution","Both wanted to remain under Spain","Both wanted immediate armed revolution"], correct:0},
+    {q:"On August 21, 1896, the Katipuneros gathered at the house of Apolonio Samson in what place?", options:["Tejeros","Biak-na-Bato","Kangkong","Kawit"], correct:2},
+    {q:"What did the Katipuneros do at the Cry of Pugad Lawin?", options:["Signed a peace treaty with Spain","Tore up their cedulas in defiance of Spain","Elected Emilio Aguinaldo as president","Surrendered to Spanish forces"], correct:1},
+    {q:"When did the Cry of Pugad Lawin take place?", options:["July 7, 1892","August 23, 1896","December 30, 1896","March 1897"], correct:1},
+    {q:"Why did Pio Valenzuela travel to Dapitan to meet with Jose Rizal in 1896?", options:["To ask Rizal to lead the Spanish army","To inform Rizal about the Katipunan's plans and ask for his advice","To invite Rizal to the Tejeros Convention","To negotiate the Pact of Biak-na-Bato"], correct:1},
+    {q:"When was Jose Rizal executed?", options:["August 23, 1896","December 30, 1896","December 30, 1897","June 12, 1898"], correct:1},
+    {q:"What were the two rival factions of the Katipunan in Cavite?", options:["Balintawak and Pugad Lawin","Malolos and Biak-na-Bato","Magdalo and Magdiwang","Supreme and Provincial"], correct:2},
+    {q:"What was the main purpose of the Tejeros Convention?", options:["To celebrate a Spanish victory","To discuss the organization and leadership of the revolutionary government","To execute Jose Rizal","To establish Spanish rule in Cavite"], correct:1},
+    {q:"Who was elected president at the Tejeros Convention?", options:["Andres Bonifacio","Mariano Álvarez","Emilio Aguinaldo","Apolinario Mabini"], correct:2},
+    {q:"What naval battle in May 1898 crippled Spain's naval power in the Philippines?", options:["Battle of Mactan","Battle of Manila Bay","Battle of Tirad Pass","Battle of Alapan"], correct:1},
+    {q:"Who led the American fleet to victory in the Battle of Manila Bay?", options:["Emilio Aguinaldo","William McKinley","George Dewey","Ambrosio Bautista"], correct:2},
+    {q:"Where was Philippine independence declared on June 12, 1898?", options:["Malolos, Bulacan","Kawit, Cavite","Manila","Biak-na-Bato"], correct:1},
+    {q:"What was played publicly for the first time during the Declaration of Independence?", options:["The Malolos Constitution","The Marcha Nacional Filipina (national anthem)","The Pact of Biak-na-Bato","The Treaty of Paris"], correct:1},
+    {q:"Who read the Act of the Declaration of Independence on June 12, 1898?", options:["Emilio Aguinaldo","Julian Felipe","Ambrosio Rianzares Bautista","George Dewey"], correct:2},
+    {q:"Where did the Malolos Congress convene to draft a constitution for the new nation?", options:["Kawit, Cavite","Malolos, Bulacan","Manila","Biak-na-Bato"], correct:1},
+    {q:"What was significant about the Malolos Constitution?", options:["It was written by the Spanish government","It was the first republican constitution in Asia","It ended the Philippine Revolution","It gave the Philippines to the United States"], correct:1},
+    {q:"Who became the first president of the First Philippine Republic?", options:["Andres Bonifacio","Jose Rizal","Emilio Aguinaldo","Mariano Álvarez"], correct:2},
+    {q:"Why did the United States and Spain stage the Mock Battle of Manila in August 1898?", options:["To test their weapons","To let Spain surrender to the Americans instead of the Filipinos, preserving Spanish honor","To celebrate the end of the war","To give the Philippines back to Spain"], correct:1},
+    {q:"What did the Treaty of Paris (December 1898) do?", options:["Gave the Philippines its full independence","Started the Philippine Revolution","Ended the Spanish-American War and had Spain cede the Philippines to the United States","Restored Spanish rule over the Philippines"], correct:2}
+  ];
+
+  const saQuestions = [
+    {q:"Give the correct order of these four events: Rizal's execution, Cry of Pugad Lawin, Pact of Biak-na-Bato, Tejeros Convention.", sample:"Cry of Pugad Lawin → Rizal's execution → Tejeros Convention → Pact of Biak-na-Bato"},
+    {q:"What was the Republic of Biak-na-Bato?", sample:"A revolutionary government established during the struggle against Spain."},
+    {q:"Name the faction led by Mariano Álvarez during the conflict in Cavite.", sample:"Magdiwang"},
+    {q:"How could a Katipon advance to the rank of Kawal?", sample:"By recruiting new members into the Katipunan."},
+    {q:"Name at least one woman (Katipunera) who was among the first members of the Katipunan.", sample:"Any of: Gregoria de Jesus, Marina Dizon, Josefa Rizal, Trinidad Rizal"},
+    {q:"Give one important role performed by the Katipuneras.", sample:"Any reasonable answer: kept documents/secrets safe, recruited members, organized or hid meetings behind festivities, smuggled important documents."},
+    {q:"Why did the writers of Kalayaan use pen names?", sample:"To hide their true identities from the Spanish authorities."},
+    {q:"How did the execution of Jose Rizal affect the Philippine Revolution?", sample:"It strengthened Filipino anger against Spain and inspired more Filipinos to support or join the revolution."},
+    {q:"Why did the rivalry between the Magdalo and Magdiwang factions become a problem for the revolutionaries?", sample:"Their disagreement over leadership and authority created division among the revolutionaries."},
+    {q:"In your own words, explain why the Cry of Pugad Lawin is considered an important turning point in the Philippine Revolution.", sample:"Open-ended: it marked the Katipuneros' open, formal rejection of Spanish rule and the start of the armed revolution."},
+    {q:"Why is the Battle of Manila Bay considered an important turning point in 1898?", sample:"It crippled Spain's naval power in the Philippines, which was a major factor in Spain's defeat in the region."},
+    {q:"What two important \"firsts\" happened during the Declaration of Independence in Kawit, Cavite?", sample:"The Philippine flag was waved publicly for the first time, and the national anthem (Marcha Nacional Filipina) was played publicly for the first time."},
+    {q:"What was the purpose of the Malolos Congress?", sample:"To draft a constitution and organize the government of the new Philippine Republic."},
+    {q:"Why was the Mock Battle of Manila considered unfair to the Filipino revolutionaries?", sample:"Filipino forces, who had been fighting Spain, were kept out of the city even though the battle decided who would control Manila."},
+    {q:"How did the Treaty of Paris affect the Philippines, even though Filipinos had no part in it?", sample:"It formally ended Spanish rule and transferred control of the Philippines to the United States for $20 million, without any Filipino representation in the decision."}
+  ];
+
+  function renderMC(){
+    const container = document.getElementById('mcContainer');
+    mcQuestions.forEach((item, i) => {
+      const card = document.createElement('div');
+      card.className = 'q-card';
+      card.dataset.index = i;
+      const optionsHtml = item.options.map((opt, j) => `
+        <label class="option">
+          <input type="radio" name="mc${i}" value="${j}">
+          <span>${String.fromCharCode(65+j)}. ${opt}</span>
+        </label>`).join('');
+      card.innerHTML = `<p class="q-text"><strong>${i+1}.</strong> ${item.q}</p>
+        <div class="options">${optionsHtml}</div>
+        <p class="feedback" hidden></p>`;
+      container.appendChild(card);
+    });
+  }
+
+  function renderSA(){
+    const container = document.getElementById('saContainer');
+    saQuestions.forEach((item, i) => {
+      const num = i + 31;
+      const card = document.createElement('div');
+      card.className = 'q-card sa-card';
+      card.innerHTML = `<p class="q-text"><strong>${num}.</strong> ${item.q}</p>
+        <textarea class="sa-textarea" rows="2" placeholder="Write your answer here..."></textarea>
+        <p class="sample-answer" hidden><strong>Suggested answer:</strong> ${item.sample}</p>`;
+      container.appendChild(card);
+    });
+  }
+
+  function gradeQuiz(){
+    let score = 0;
+    mcQuestions.forEach((item, i) => {
+      const card = document.querySelector('.q-card[data-index="' + i + '"]');
+      const selected = card.querySelector('input[name="mc' + i + '"]:checked');
+      const feedback = card.querySelector('.feedback');
+      const options = card.querySelectorAll('.option');
+      options.forEach(opt => opt.classList.remove('correct','incorrect'));
+
+      if (selected){
+        const val = parseInt(selected.value, 10);
+        const chosenLabel = selected.closest('.option');
+        if (val === item.correct){
+          score++;
+          chosenLabel.classList.add('correct');
+          feedback.textContent = '✓ Correct!';
+          feedback.className = 'feedback correct-text';
+        } else {
+          chosenLabel.classList.add('incorrect');
+          options[item.correct].classList.add('correct');
+          feedback.textContent = '✗ Not quite. The correct answer is ' + String.fromCharCode(65+item.correct) + '.';
+          feedback.className = 'feedback incorrect-text';
+        }
+      } else {
+        options[item.correct].classList.add('correct');
+        feedback.textContent = "You didn't answer this one. The correct answer is " + String.fromCharCode(65+item.correct) + '.';
+        feedback.className = 'feedback incorrect-text';
+      }
+      feedback.hidden = false;
+    });
+
+    document.querySelectorAll('.sample-answer').forEach(el => el.hidden = false);
+    const results = document.getElementById('results');
+    results.hidden = false;
+    document.getElementById('scoreSummary').innerHTML =
+      '<p class="score-big">' + score + ' / 30</p>' +
+      '<p>Multiple Choice Score</p>' +
+      '<p class="sa-note">Part II (Short Answer, 15 points) now shows suggested answers below each item — ask a parent or teacher to check your answers against them.</p>';
+    results.scrollIntoView({behavior:'smooth'});
+  }
+
+  function resetQuiz(){
+    document.querySelectorAll('input[type=radio]').forEach(r => r.checked = false);
+    document.querySelectorAll('.sa-textarea').forEach(t => t.value = '');
+    document.querySelectorAll('.feedback').forEach(f => { f.hidden = true; f.textContent = ''; });
+    document.querySelectorAll('.option').forEach(o => o.classList.remove('correct','incorrect'));
+    document.querySelectorAll('.sample-answer').forEach(el => el.hidden = true);
+    document.getElementById('results').hidden = true;
+    document.getElementById('studentName').value = '';
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  });
+
+  renderMC();
+  renderSA();
+  document.getElementById('submitBtn').addEventListener('click', gradeQuiz);
+  document.getElementById('resetBtn').addEventListener('click', resetQuiz);
+</script>
+</body>
+</html>
