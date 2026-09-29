@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grade 6 Science: 1st Quarter Reviewer and Quiz</title>
+<style>
+  :root{
+    --paper:#F5F0E6;
+    --grid:#E6DBC7;
+    --ink:#2B241E;
+    --ink-soft:#655B4D;
+    --slate:#3E6680;  --slate-tint:#DCEAF0;
+    --magma:#C1440E;  --magma-tint:#FBE3D3;
+    --gold:#B98900;   --gold-tint:#FBEFC9;
+    --teal:#1F7A6C;   --teal-tint:#DCF2EC;
+    --white:#FFFFFF;
+    --display:Georgia,Cambria,"Times New Roman",serif;
+    --body:"Segoe UI",Calibri,Verdana,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; color:var(--ink); font-family:var(--body); font-size:17px; line-height:1.55;
+    background-color:var(--paper);
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size:30px 30px;
+  }
+  .sheet{
+    max-width:980px; margin:24px auto 48px; background:var(--white);
+    border:2px solid var(--ink); border-radius:4px;
+  }
+  /* ---------- Header ---------- */
+  .masthead{
+    display:flex; flex-wrap:wrap; gap:18px 28px; align-items:flex-end; justify-content:space-between;
+    padding:26px 32px 18px;
+  }
+  .brand{display:flex; gap:16px; align-items:center}
+  .brand svg{flex:none}
+  h1{font-family:var(--display); font-weight:700; font-size:2.1rem; line-height:1.1; margin:0; letter-spacing:-.005em}
+  .subtitle{margin:6px 0 0; color:var(--ink-soft); font-size:1rem}
+  .namefield{display:flex; flex-direction:column; gap:4px; min-width:250px}
+  .namefield label{font-weight:700; font-size:.95rem}
+  .namefield input{
+    font:inherit; font-size:1.1rem; padding:8px 10px; color:var(--ink);
+    border:0; border-bottom:3px solid var(--ink); background:var(--gold-tint); border-radius:3px 3px 0 0;
+  }
+  .namefield input:focus-visible{outline:3px solid var(--slate); outline-offset:2px}
+  .printline{display:none}
+
+  /* ---------- Tabs ---------- */
+  .tabs{display:flex; gap:6px; padding:0 32px; border-bottom:2px solid var(--ink)}
+  .tab{
+    font:inherit; font-family:var(--display); font-weight:700; font-size:1.1rem; cursor:pointer;
+    padding:10px 22px 9px; color:var(--ink); background:var(--slate-tint);
+    border:2px solid var(--ink); border-bottom:0; border-radius:8px 8px 0 0; margin-bottom:-2px;
+  }
+  .tab[aria-selected="false"]{background:#ECE6D8; color:var(--ink-soft)}
+  .tab[aria-selected="true"]{background:var(--white); padding-bottom:11px}
+  .tab:focus-visible{outline:3px solid var(--slate); outline-offset:2px}
+  .panel{padding:28px 32px 36px}
+  .panel[hidden]{display:none}
+
+  /* ---------- Shared bits ---------- */
+  h2,h3,h4{font-family:var(--display); line-height:1.2}
+  .extra{
+    display:inline-block; font-family:var(--body); font-size:.72rem; font-weight:700; vertical-align:middle;
+    background:var(--gold); color:var(--white); padding:1px 7px; border-radius:20px; margin-left:6px;
+  }
+  .note{background:var(--gold-tint); border-left:6px solid var(--gold); padding:10px 14px; margin:0 0 22px; font-size:.97rem}
+  .jump{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 26px}
+  .jump a{
+    text-decoration:none; color:var(--white); font-weight:700; padding:8px 16px; border-radius:6px;
+    background:var(--c); border:2px solid var(--ink);
+  }
+  .jump a:focus-visible{outline:3px solid var(--ink); outline-offset:2px}
+  .p1,.ch1{--c:var(--slate); --t:var(--slate-tint)}
+  .p2,.ch2{--c:var(--magma); --t:var(--magma-tint)}
+  .p3,.ch3{--c:var(--gold); --t:var(--gold-tint)}
+  .p4,.ch4{--c:var(--teal); --t:var(--teal-tint)}
+  .toolbar{display:flex; gap:10px; flex-wrap:wrap; margin:0 0 20px}
+  button.btn{
+    font:inherit; font-weight:700; cursor:pointer; padding:10px 20px; border-radius:6px;
+    color:var(--white); background:var(--ink); border:2px solid var(--ink);
+  }
+  button.btn.alt{background:var(--white); color:var(--ink)}
+  button.btn:disabled{opacity:.45; cursor:not-allowed}
+  button.btn:focus-visible{outline:3px solid var(--slate); outline-offset:2px}
+
+  /* ---------- Reviewer ---------- */
+  .chapter{margin:0 0 46px}
+  .chapter > h2{
+    margin:0 0 16px; padding:12px 18px; background:var(--c); color:var(--white);
+    font-size:1.5rem; border-radius:4px; border:2px solid var(--ink);
+  }
+  .chapter h3{font-size:1.22rem; color:var(--c); margin:26px 0 8px; padding-bottom:4px; border-bottom:3px dotted var(--c)}
+  .bigidea{font-size:1.06rem; margin:0 0 6px}
+  .terms{display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:14px; margin:12px 0}
+  .tag{
+    position:relative; padding:12px 14px 12px 40px; background:var(--t);
+    border:2px solid var(--c); border-radius:3px 14px 14px 3px;
+  }
+  .tag::before{
+    content:""; position:absolute; left:12px; top:16px; width:13px; height:13px; border-radius:2px;
+    background:var(--white); border:2px solid var(--c); transform:rotate(45deg);
+  }
+  .tag b{display:block; font-family:var(--display); font-size:1.06rem; color:var(--ink)}
+  ul.facts{list-style:none; margin:8px 0; padding:0}
+  ul.facts li{position:relative; padding-left:26px; margin:7px 0}
+  ul.facts li::before{
+    content:""; position:absolute; left:4px; top:.6em; width:11px; height:3px; background:var(--c);
+  }
+  .remember{
+    margin:16px 0; padding:12px 16px; font-weight:700;
+    background:var(--gold-tint); border:2px solid var(--ink); border-left:10px solid var(--gold); border-radius:3px;
+  }
+  .watch{
+    margin:16px 0; padding:12px 16px; background:var(--white);
+    border:2px dashed var(--c); border-radius:6px;
+  }
+  .twocol{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:12px 0}
+  .twocol > div{padding:10px 14px; border:2px solid var(--ink); border-radius:4px}
+  .twocol h4{margin:0 0 4px; font-size:1.05rem}
+  .twocol .good{background:var(--teal-tint)}
+  .twocol .bad{background:var(--magma-tint)}
+  figure{margin:16px 0; padding:14px; border:2px solid var(--c); border-radius:6px; background:var(--white)}
+  figure svg{width:100%; height:auto; display:block; max-width:460px; margin:0 auto}
+  figure .pair{display:flex; flex-wrap:wrap; gap:14px; justify-content:center}
+  figure .pair > div{flex:1 1 300px; min-width:0}
+  figure .trio{display:flex; flex-wrap:wrap; gap:12px; justify-content:center}
+  figure .trio > div{flex:1 1 220px; min-width:0}
+  figcaption{font-size:.93rem; color:var(--ink-soft); text-align:center; margin-top:6px}
+  .flow{list-style:none; display:flex; flex-wrap:wrap; gap:10px 0; margin:10px 0; padding:0; align-items:center}
+  .flow li{
+    background:var(--t); border:2px solid var(--c); border-radius:20px; padding:5px 16px; font-weight:700; position:relative;
+  }
+  .flow li + li{margin-left:34px}
+  .flow li + li::before{
+    content:"\2192"; position:absolute; left:-30px; top:50%; transform:translateY(-52%); font-size:1.3rem; color:var(--ink);
+  }
+  .flowlabel{margin:14px 0 2px; font-weight:700}
+  table.compare{border-collapse:collapse; width:100%; margin:12px 0; font-size:.98rem}
+  table.compare th, table.compare td{border:2px solid var(--ink); padding:8px 10px; text-align:left; vertical-align:top}
+  table.compare th{background:var(--c); color:var(--white); font-family:var(--display)}
+  table.compare tbody th{background:var(--t); color:var(--ink)}
+  .tablewrap{overflow-x:auto}
+
+  /* SVG classes */
+  .s-line{fill:none; stroke:var(--ink); stroke-width:3; stroke-linecap:round; stroke-linejoin:round}
+  .s-thin{fill:none; stroke:var(--ink); stroke-width:2; stroke-linecap:round}
+  .s-txt{fill:var(--ink); font-family:"Segoe UI",Calibri,Verdana,sans-serif; font-size:13px; font-weight:700}
+  .s-fill1{fill:var(--slate-tint); stroke:var(--ink); stroke-width:3}
+  .s-fill2{fill:var(--magma-tint); stroke:var(--ink); stroke-width:3}
+  .s-fill3{fill:var(--gold-tint); stroke:var(--ink); stroke-width:3}
+  .s-fill4{fill:var(--teal-tint); stroke:var(--ink); stroke-width:3}
+  .s-magma{fill:#E8672B; stroke:var(--ink); stroke-width:2.5}
+  .s-rock{fill:#C9B98F; stroke:var(--ink); stroke-width:3}
+  .s-rock2{fill:#A9997A; stroke:var(--ink); stroke-width:3}
+
+  /* ---------- Quiz ---------- */
+  .quizintro{margin:0 0 20px}
+  .part{margin:0 0 40px}
+  .part > h3{
+    margin:0 0 14px; padding:11px 18px; background:var(--c); color:var(--white); font-size:1.35rem;
+    border:2px solid var(--ink); border-radius:4px;
+  }
+  .part h4{margin:24px 0 8px; font-size:1.06rem; color:var(--c)}
+  fieldset.q, .sa{border:0; margin:0 0 20px; padding:0 0 4px; min-width:0}
+  fieldset.q legend, .sa .stem{font-weight:700; font-size:1.05rem; padding:0; margin-bottom:8px; display:block}
+  .num{
+    display:inline-block; min-width:2.1em; text-align:center; margin-right:8px; padding:0 6px;
+    font-family:var(--display); color:var(--white); background:var(--c); border-radius:4px;
+  }
+  .opts{display:grid; gap:8px}
+  .opt{
+    display:flex; align-items:flex-start; gap:10px; padding:9px 12px; cursor:pointer;
+    border:2px solid #CBBFA3; border-radius:6px; background:var(--white);
+  }
+  .opt input{margin-top:.32em; accent-color:var(--ink); width:1.1em; height:1.1em; flex:none}
+  .opt:hover{border-color:var(--c)}
+  .opt:has(input:checked){border-color:var(--ink); background:var(--slate-tint)}
+  .opt:has(input:focus-visible){outline:3px solid var(--slate); outline-offset:2px}
+  .opt.is-correct{border-color:var(--teal); background:var(--teal-tint)}
+  .opt.is-wrong{border-color:var(--magma); background:var(--magma-tint)}
+  .opt .mark{margin-left:auto; font-weight:700; white-space:nowrap}
+  .feedback{margin:8px 0 0; padding:8px 12px; border-radius:5px; font-size:.97rem}
+  .feedback.ok{background:var(--teal-tint); border-left:6px solid var(--teal)}
+  .feedback.no{background:var(--magma-tint); border-left:6px solid var(--magma)}
+  .feedback.skip{background:var(--gold-tint); border-left:6px solid var(--gold)}
+  textarea{
+    width:100%; min-height:88px; font:inherit; font-size:1.02rem; color:var(--ink); padding:10px 12px; resize:vertical;
+    border:2px solid #CBBFA3; border-radius:6px;
+    background:repeating-linear-gradient(transparent 0, transparent 27px, #EAE1CC 27px, #EAE1CC 28px);
+    line-height:28px;
+  }
+  textarea:focus-visible{outline:3px solid var(--slate); outline-offset:2px}
+  .suggest{margin:8px 0 0; padding:10px 14px; background:var(--gold-tint); border:2px solid var(--ink); border-radius:6px}
+  .suggest[hidden]{display:none}
+  .suggest b{font-family:var(--display)}
+  .suggest .src{display:block; margin-top:4px; font-size:.88rem; color:var(--ink-soft)}
+  .suggest label{display:flex; gap:8px; align-items:center; margin-top:8px; font-weight:700; cursor:pointer}
+  .suggest input{width:1.15em; height:1.15em; accent-color:var(--teal)}
+  .actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:10px}
+
+  #results{margin:0 0 30px; padding:20px 22px; border:3px solid var(--ink); border-radius:6px; background:var(--gold-tint)}
+  #results[hidden]{display:none}
+  #results h3{margin:0 0 4px; font-size:1.5rem}
+  .stamp{animation:stamp .35s ease-out both}
+  @keyframes stamp{from{transform:scale(1.25); opacity:0} to{transform:scale(1); opacity:1}}
+  .bigscore{font-family:var(--display); font-size:2.5rem; line-height:1.1; margin:6px 0}
+  .rows{display:grid; gap:10px; margin:14px 0}
+  .row{display:grid; grid-template-columns:minmax(190px,260px) 1fr auto; gap:12px; align-items:center}
+  .bar{height:16px; background:var(--white); border:2px solid var(--ink); border-radius:8px; overflow:hidden}
+  .bar > span{display:block; height:100%; background:var(--c)}
+  .row b{white-space:nowrap}
+  .fine{font-size:.92rem; color:var(--ink-soft); margin:8px 0 0}
+
+  footer{padding:14px 32px 22px; border-top:2px solid var(--ink); font-size:.9rem; color:var(--ink-soft)}
+
+  @media (max-width:640px){
+    body{font-size:16px}
+    .sheet{margin:0; border-radius:0; border-left:0; border-right:0}
+    .masthead,.panel,footer{padding-left:16px; padding-right:16px}
+    .tabs{padding:0 16px}
+    .tab{padding:9px 14px}
+    h1{font-size:1.5rem}
+    .twocol{grid-template-columns:1fr}
+    .row{grid-template-columns:1fr auto}
+    .row .bar{grid-column:1 / -1; order:3}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .stamp{animation:none}
+  }
+
+  /* ---------- Print ---------- */
+  @media print{
+    @page{margin:14mm}
+    body{background:#fff; font-size:12pt; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+    .sheet{border:0; margin:0; max-width:none}
+    .tabs,.toolbar,.actions,.jump,footer .screenonly{display:none !important}
+    .masthead{padding:0 0 8px}
+    .panel{padding:8px 0 0}
+    .namefield input{background:transparent; border-bottom:2px solid #000; font-size:12pt}
+    .printline{display:block; margin:0 0 10px; font-size:11pt}
+    .chapter > h2, .part > h3, .jump a, table.compare th, .num, .bar > span{
+      -webkit-print-color-adjust:exact; print-color-adjust:exact;
+    }
+    .chapter,.part{break-before:page}
+    .chapter:first-of-type,.part:first-of-type{break-before:auto}
+    .tag,figure,fieldset.q,.sa,.twocol > div,table.compare tr,.remember,.watch{break-inside:avoid}
+    h2,h3,h4{break-after:avoid}
+    .opt{border:1px solid #777; padding:5px 10px}
+    textarea{border:1px solid #777; min-height:100px}
+    #results{background:#fff}
+    footer{border-top:1px solid #777; padding:8px 0 0}
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#2B241E"/>
+    </marker>
+  </defs>
+</svg>
+<div class="sheet">
+
+  <header class="masthead">
+    <div class="brand">
+      <svg width="76" height="76" viewBox="0 0 76 76" role="img" aria-label="A volcano with a crack representing a fault line">
+        <path d="M8 62 L30 16 L38 30 L46 12 L68 62 Z" fill="#C1440E" stroke="#2B241E" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M38 30 L30 50 L44 46 L34 62" fill="none" stroke="#2B241E" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M40 22 C44 14 40 8 46 4" fill="none" stroke="#655B4D" stroke-width="3" stroke-linecap="round"/>
+        <path d="M8 62 L68 62" stroke="#2B241E" stroke-width="3" stroke-linecap="round"/>
+        <path d="M4 66 L20 60 L34 68 L50 58 L72 66" fill="none" stroke="#3E6680" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div>
+        <h1>Earth &amp; Life Science Notebook</h1>
+        <p class="subtitle">Grade 6, 1st Quarter reviewer and quiz: Earthquakes, Volcanoes and Weathering, Natural Resources, Cells and the Microscope</p>
+      </div>
+    </div>
+    <div class="namefield">
+      <label for="studentName">Student name</label>
+      <input id="studentName" type="text" autocomplete="off" placeholder="Type your name here">
+    </div>
+  </header>
+  <p class="printline">Date: ______________________ &nbsp;&nbsp; Score: ______ / 60</p>
+
+  <div class="tabs" role="tablist" aria-label="Reviewer or quiz">
+    <button class="tab" role="tab" id="tab-reviewer" aria-controls="panel-reviewer" aria-selected="true">Reviewer</button>
+    <button class="tab" role="tab" id="tab-quiz" aria-controls="panel-quiz" aria-selected="false" tabindex="-1">Take the Quiz</button>
+  </div>
+
+  <!-- =========================== REVIEWER =========================== -->
+  <main>
+  <section class="panel" id="panel-reviewer" role="tabpanel" aria-labelledby="tab-reviewer">
+
+    <div class="toolbar"><button class="btn alt" type="button" data-print>Print this page</button></div>
+
+    <p class="note">Chapters 1 and 2 come straight from the school's Quiz #1 (Earthquakes) and Quiz #2 &amp; #3 (Volcanoes and Weathering), including the graded answer key. Chapter 3 (Natural Resources) uses the school's own quiz questions, but the copy provided did not show a completed answer key, so its answers are standard, accurate science &mdash; worth checking against the teacher's key if you have it. Chapter 4 (Cells and the Microscope) had no quiz yet, so the whole chapter uses standard, accurate Grade 6 facts, marked <span class="extra">extra</span>.</p>
+
+    <nav class="jump" aria-label="Jump to a chapter">
+      <a class="ch1" href="#ch1">1. Earthquakes</a>
+      <a class="ch2" href="#ch2">2. Volcanoes &amp; Weathering</a>
+      <a class="ch3" href="#ch3">3. Natural Resources</a>
+      <a class="ch4" href="#ch4">4. Cells &amp; the Microscope</a>
+    </nav>
+
+    <!-- ---------- CHAPTER 1 ---------- -->
+    <article class="chapter ch1" id="ch1">
+      <h2>Chapter 1: Earthquakes and Earthquake Waves</h2>
+      <p class="bigidea">Earthquakes happen along faults in Earth's crust. They send out waves of energy, and how strongly a place shakes depends on distance and on what is built there.</p>
+
+      <h3>Key terms</h3>
+      <div class="terms">
+        <div class="tag"><b>Fault</b>A break in Earth's crust where rocks slide past each other. Earthquakes happen along faults.</div>
+        <div class="tag"><b>Focus</b><span class="extra">extra</span> The point underground where an earthquake's rupture begins.</div>
+        <div class="tag"><b>Epicenter</b>The point on Earth's surface directly above the focus. Damage is usually strongest here, which is why it matters to rescuers.</div>
+        <div class="tag"><b>Body waves</b>Seismic waves that travel through Earth's interior: P-waves and S-waves.</div>
+        <div class="tag"><b>Surface waves</b>Seismic waves that travel along Earth's crust: Love waves and Rayleigh waves.</div>
+        <div class="tag"><b>Magnitude</b>The size of an earthquake at its source. It is a fixed number.</div>
+        <div class="tag"><b>Intensity</b>The strength of shaking people feel in different places. It changes depending on distance and on how sturdy nearby buildings are.</div>
+        <div class="tag"><b>Tsunami</b>A large, powerful ocean wave that can form after an earthquake under the ocean floor.</div>
+      </div>
+
+      <h3>Faults: three ways rock breaks and moves</h3>
+      <figure>
+        <div class="trio">
+          <div>
+            <svg viewBox="0 0 200 200" role="img" aria-label="Normal fault diagram: rocks pull apart and the right block drops down">
+              <path class="s-rock" d="M10 90 L95 70 L95 190 L10 190 Z"/>
+              <path class="s-rock2" d="M95 70 L190 110 L190 190 L95 190 Z"/>
+              <path class="s-line" d="M95 70 L95 190"/>
+              <path class="s-line" d="M50 45 L35 65" marker-end="url(#ah)"/>
+              <path class="s-line" d="M150 85 L165 105" marker-end="url(#ah)"/>
+              <text class="s-txt" x="100" y="18" text-anchor="middle">Normal fault: pulls apart</text>
+            </svg>
+            <figcaption>Rocks pull apart and one block drops. Over time this can form valleys or basins.</figcaption>
+          </div>
+          <div>
+            <svg viewBox="0 0 200 200" role="img" aria-label="Reverse fault diagram: rocks push together and the right block rises">
+              <path class="s-rock2" d="M10 110 L100 90 L100 190 L10 190 Z"/>
+              <path class="s-rock" d="M100 90 L190 55 L190 190 L100 190 Z"/>
+              <path class="s-line" d="M100 90 L100 190"/>
+              <path class="s-line" d="M60 55 L80 72" marker-end="url(#ah)"/>
+              <path class="s-line" d="M160 100 L138 88" marker-end="url(#ah)"/>
+              <text class="s-txt" x="100" y="18" text-anchor="middle">Reverse fault: pushes together</text>
+            </svg>
+            <figcaption>Rocks push together and one block rides up. Over time this can build mountains.</figcaption>
+          </div>
+          <div>
+            <svg viewBox="0 0 200 200" role="img" aria-label="Strike-slip fault diagram: rocks slide sideways past each other, shown by an offset stripe">
+              <rect class="s-rock" x="10" y="60" width="180" height="100"/>
+              <rect x="10" y="95" width="85" height="14" fill="#8B7A54"/>
+              <rect x="105" y="112" width="85" height="14" fill="#8B7A54"/>
+              <path class="s-line" d="M100 40 L100 170"/>
+              <path class="s-line" d="M75 55 L45 55" marker-end="url(#ah)"/>
+              <path class="s-line" d="M125 165 L155 165" marker-end="url(#ah)"/>
+              <text class="s-txt" x="100" y="18" text-anchor="middle">Strike-slip fault: slides sideways</text>
+              <text class="s-txt" x="100" y="184" text-anchor="middle" style="font-size:11px">the striped layer no longer lines up</text>
+            </svg>
+            <figcaption>Rocks on either side slide horizontally past each other.</figcaption>
+          </div>
+        </div>
+      </figure>
+
+      <h3>Body waves and surface waves</h3>
+      <div class="tablewrap">
+      <table class="compare">
+        <thead><tr><th scope="col"></th><th scope="col">Body waves</th><th scope="col">Surface waves</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Travel through</th><td>Earth's interior</td><td>Earth's crust (along the surface)</td></tr>
+          <tr><th scope="row">Examples</th><td>P-waves, S-waves</td><td>Love waves, Rayleigh waves</td></tr>
+          <tr><th scope="row">Motion</th><td>P-wave: push-pull. S-wave: side-to-side.</td><td>Rayleigh wave: rolling motion.</td></tr>
+          <tr><th scope="row">Speed</th><td>P-wave is the fastest wave; it arrives first.</td><td>Arrive after the body waves.</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h3>Magnitude versus intensity</h3>
+      <ul class="facts">
+        <li><b>Magnitude</b> is the size of the earthquake at its source. It does not change from place to place.</li>
+        <li><b>Intensity</b> is the strength of shaking people feel. It can be different in different places, partly because of distance and partly because of how sturdy the buildings are &mdash; a country with weaker buildings can experience higher intensity from the very same earthquake.</li>
+        <li>A higher magnitude number means far more energy is released. This quiz's answer key teaches that a magnitude 7 earthquake releases about <b>32 times more energy</b> than a magnitude 5 earthquake.</li>
+      </ul>
+
+      <h3>Earthquakes and coasts</h3>
+      <ul class="facts">
+        <li>An earthquake under the ocean floor may cause a <b>tsunami</b> that strikes the shore.</li>
+        <li>A place closer to the epicenter usually shakes more strongly than a place farther away.</li>
+      </ul>
+    </article>
+
+    <!-- ---------- CHAPTER 2 ---------- -->
+    <article class="chapter ch2" id="ch2">
+      <h2>Chapter 2: Volcanoes and Weathering</h2>
+      <p class="bigidea">Volcanoes bring heat and melted rock up from inside the Earth. Once rock is at the surface, weathering slowly breaks it down in two different ways.</p>
+
+      <h3>Key terms</h3>
+      <div class="terms">
+        <div class="tag"><b>Vent</b>The opening that runs from the magma chamber up to the top of the volcano.</div>
+        <div class="tag"><b>Crater</b><span class="extra">extra</span> The bowl-shaped opening at the top of a volcano, where the vent reaches the surface.</div>
+        <div class="tag"><b>Magma chamber</b><span class="extra">extra</span> The underground pool where melted rock collects beneath a volcano.</div>
+        <div class="tag"><b>Shield volcano</b>A volcano with gently sloping sides, built from thin, runny lava.</div>
+        <div class="tag"><b>Pyroclastic flow</b>A fast, burning cloud of hot ash, gas, and rock from an explosive eruption. More dangerous than a lava flow because it travels quickly and burns everything in its path.</div>
+        <div class="tag"><b>Ring of Fire</b>The chain of volcanoes that circles the edge of the Pacific Plate.</div>
+        <div class="tag"><b>Weathering</b>The breaking down of rock over time.</div>
+        <div class="tag"><b>Physical weathering</b>Breaks a rock into smaller pieces without changing what it is made of.</div>
+        <div class="tag"><b>Chemical weathering</b>Changes the minerals in a rock, changing what it is made of.</div>
+        <div class="tag"><b>Ice wedging</b>Water seeps into a crack, freezes, and expands, splitting the rock. A type of physical weathering.</div>
+        <div class="tag"><b>Oxidation</b>A chemical reaction with oxygen, such as a metal turning reddish-brown (rust). A type of chemical weathering.</div>
+      </div>
+
+      <h3>Inside a volcano</h3>
+      <figure>
+        <svg viewBox="0 0 380 260" role="img" aria-label="Cross-section of a volcano showing the magma chamber, vent, crater, and lava flow">
+          <path class="s-rock" d="M20 240 L150 60 L190 60 L320 240 Z"/>
+          <path class="s-fill2" d="M158 60 L182 60 L176 100 L164 100 Z"/>
+          <path class="s-magma" d="M164 100 L176 100 L200 240 L250 240 L178 108 Z"/>
+          <ellipse class="s-magma" cx="170" cy="215" rx="55" ry="26"/>
+          <path class="s-line" d="M20 240 L320 240"/>
+          <path class="s-line" d="M150 60 L190 60"/>
+          <text class="s-txt" x="170" y="40">Crater</text>
+          <path class="s-thin" d="M170 46 L170 60"/>
+          <text class="s-txt" x="236" y="130">Vent</text>
+          <path class="s-thin" d="M232 134 L188 130"/>
+          <text class="s-txt" x="296" y="205">Lava flow</text>
+          <path class="s-thin" d="M292 200 L232 222"/>
+          <text class="s-txt" x="56" y="222">Magma chamber</text>
+          <path class="s-thin" d="M120 216 L128 216"/>
+        </svg>
+        <figcaption>Magma rises through the vent and out the crater. When it reaches the surface it is called lava.</figcaption>
+      </figure>
+      <ul class="facts">
+        <li>A <b>shield volcano</b> has gentle slopes because its lava is thin and runny.</li>
+        <li><b>Volcanologists</b> (who study volcanoes) and <b>seismologists</b> (who study earthquakes) often work together &mdash; for example, monitoring volcanic tremors to warn communities of a possible eruption.</li>
+      </ul>
+
+      <h3>Types of eruptions, from quietest to most violent</h3>
+      <ol class="flow"><li>Hawaiian</li><li>Strombolian</li><li>Vulcanian</li><li>Pelean</li></ol>
+      <ul class="facts">
+        <li><b>Hawaiian</b>: quiet eruption; produces a fountain of lava that runs down the sides.</li>
+        <li><b>Strombolian</b>: a relatively quiet eruption with mild, repeated bursts.</li>
+        <li><b>Vulcanian</b>: a violent eruption that sends lava, ash, cinders, and gas into the air.</li>
+        <li><b>Pelean</b>: the most violent type; produces an avalanche of red-hot ash and gases racing down the slope.</li>
+      </ul>
+      <p class="watch"><b>Watch out:</b> Pyroclastic flows (as in a Pelean eruption) are far more dangerous than slow lava flows because they travel quickly and burn everything in their path.</p>
+
+      <h3>Weathering: physical vs. chemical</h3>
+      <div class="tablewrap">
+      <table class="compare">
+        <thead><tr><th scope="col"></th><th scope="col">Physical weathering</th><th scope="col">Chemical weathering</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">What changes</th><td>Size and shape of the rock only</td><td>The minerals the rock is made of</td></tr>
+          <tr><th scope="row">Examples</th><td>Ice wedging, abrasion, burrowing animals, plant roots splitting rock</td><td>Oxidation (rusting), acid rain reacting with rock, formation of speleothems (cave mineral formations)</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <ul class="facts">
+        <li>A tree's roots growing into a rock's cracks and splitting it apart is <b>physical</b> weathering.</li>
+        <li>Acid rain reacting with the minerals in a marble monument is <b>chemical</b> weathering.</li>
+        <li>An old iron gate slowly turning reddish-brown outdoors is <b>oxidation</b>, a chemical process.</li>
+        <li>Valleys, cliffs, and canyons are mostly shaped over long periods by rain, ice, and snow breaking down rock.</li>
+      </ul>
+    </article>
+
+    <!-- ---------- CHAPTER 3 ---------- -->
+    <article class="chapter ch3" id="ch3">
+      <h2>Chapter 3: Natural Resources</h2>
+      <p class="bigidea">People use fossil fuels, minerals, and other energy resources from the Earth. Some of these can be replaced by nature fairly quickly; others cannot.</p>
+      <p class="note">This chapter's questions come from the school's own quiz, but the copy given did not include a completed answer key. The answers below are standard, accurate science &mdash; please check them against the teacher's key if you have it.</p>
+
+      <h3>Key terms</h3>
+      <div class="terms">
+        <div class="tag"><b>Fossil fuel</b>A fuel formed when the remains of plants and animals are buried quickly and change underground over a very long time. Coal, petroleum, and natural gas are fossil fuels.</div>
+        <div class="tag"><b>Mineral</b>A solid substance found naturally in the Earth.</div>
+        <div class="tag"><b>Uranium</b>A mineral used to produce nuclear energy.</div>
+        <div class="tag"><b>Refinery</b>A factory that separates crude oil into different products.</div>
+        <div class="tag"><b>Renewable resource</b>A resource nature can replace in a relatively short time, such as soil or hydroelectric energy.</div>
+        <div class="tag"><b>Nonrenewable resource</b>A resource that takes an extremely long time to form and cannot be quickly replaced, such as coal or petroleum.</div>
+        <div class="tag"><b>Malleable</b>Able to be hammered, dented, or shaped without breaking &mdash; a property of many metals.</div>
+        <div class="tag"><b>Geothermal energy</b>Energy from the heat inside the Earth.</div>
+      </div>
+
+      <h3>Renewable or nonrenewable?</h3>
+      <div class="tablewrap">
+      <table class="compare">
+        <thead><tr><th scope="col">Renewable</th><th scope="col">Nonrenewable</th></tr></thead>
+        <tbody>
+          <tr><td>Soil, hydroelectric energy</td><td>Petroleum, coal, natural gas, uranium (and other minerals)</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="remember">A nonrenewable resource cannot be replaced by nature in a relatively short period of time &mdash; it takes an extremely long time to form.</p>
+
+      <h3>Energy resources: advantages and disadvantages</h3>
+      <div class="twocol">
+        <div class="bad"><h4>Wind &amp; solar energy: shared disadvantage</h4>Both need large areas of land. Wind energy also depends on a steady, dependable wind supply.</div>
+        <div class="good"><h4>Geothermal energy: an advantage</h4>The hot water it produces can be used for recreation, such as hot springs.</div>
+      </div>
+      <ul class="facts">
+        <li><b>Hydroelectric energy</b> is not a fossil fuel &mdash; it comes from moving water.</li>
+        <li><b>Malleable</b> metals can be dented or shaped without breaking.</li>
+      </ul>
+    </article>
+
+    <!-- ---------- CHAPTER 4 ---------- -->
+    <article class="chapter ch4" id="ch4">
+      <h2>Chapter 4: Cells and Organisms; the Microscope <span class="extra">extra</span></h2>
+      <p class="bigidea">This chapter did not have a quiz yet, so it uses standard, accurate Grade 6 facts about cells and microscopes.</p>
+
+      <h3>Key terms</h3>
+      <div class="terms">
+        <div class="tag"><b>Cell</b>The basic building block of all living things.</div>
+        <div class="tag"><b>Unicellular</b>Made of only one cell, such as an amoeba or a bacterium.</div>
+        <div class="tag"><b>Multicellular</b>Made of many cells working together, such as humans, animals, and plants.</div>
+        <div class="tag"><b>Cell membrane</b>The thin covering that controls what enters and leaves the cell. Found in every cell.</div>
+        <div class="tag"><b>Cell wall</b>A rigid outer layer found in plant cells, but not in animal cells. Gives the cell extra support and shape.</div>
+        <div class="tag"><b>Nucleus</b>The cell's control center. Holds the cell's genetic material and directs its activities.</div>
+        <div class="tag"><b>Cytoplasm</b>The jelly-like substance inside the cell where the other parts float.</div>
+        <div class="tag"><b>Mitochondria</b>The organelle that releases energy for the cell to use.</div>
+        <div class="tag"><b>Chloroplast</b>Found only in plant cells. Captures sunlight and makes food for the plant.</div>
+        <div class="tag"><b>Vacuole</b>A storage sac for water, food, or waste. Plant cells usually have one large vacuole.</div>
+      </div>
+
+      <h3>Plant cell vs. animal cell</h3>
+      <figure>
+        <div class="pair">
+          <div>
+            <svg viewBox="0 0 320 260" role="img" aria-label="Diagram of a plant cell with cell wall, nucleus, chloroplasts, and a large vacuole">
+              <rect class="s-fill4" x="40" y="30" width="220" height="170" rx="16"/>
+              <rect x="52" y="42" width="196" height="146" rx="10" fill="none" stroke="#2B241E" stroke-width="2" stroke-dasharray="5 4"/>
+              <ellipse cx="185" cy="115" rx="50" ry="40" fill="#FFFFFF" stroke="#2B241E" stroke-width="2.5"/>
+              <circle cx="95" cy="70" r="24" fill="#3E6680" fill-opacity=".35" stroke="#2B241E" stroke-width="2.5"/>
+              <ellipse cx="80" cy="150" rx="18" ry="11" fill="#1F7A6C" stroke="#2B241E" stroke-width="2"/>
+              <ellipse cx="150" cy="172" rx="18" ry="11" fill="#1F7A6C" stroke="#2B241E" stroke-width="2"/>
+              <text class="s-txt" x="10" y="18">Cell wall</text>
+              <path class="s-thin" d="M46 22 L52 34"/>
+              <text class="s-txt" x="10" y="248">Cell membrane</text>
+              <path class="s-thin" d="M70 244 L60 190"/>
+              <text class="s-txt" x="10" y="70">Vacuole</text>
+              <path class="s-thin" d="M52 66 L72 68"/>
+              <text class="s-txt" x="185" y="118" text-anchor="middle" style="font-size:11px">Nucleus</text>
+              <text class="s-txt" x="200" y="246">Chloroplast</text>
+              <path class="s-thin" d="M196 240 L155 176"/>
+            </svg>
+          </div>
+          <div>
+            <svg viewBox="0 0 320 260" role="img" aria-label="Diagram of an animal cell with cell membrane, nucleus, and mitochondria, no cell wall">
+              <path class="s-fill1" d="M160 30 C240 25 285 80 275 130 C290 180 240 225 165 220 C95 235 35 200 30 140 C20 85 80 35 160 30Z"/>
+              <ellipse cx="160" cy="128" rx="50" ry="40" fill="#FFFFFF" stroke="#2B241E" stroke-width="2.5"/>
+              <ellipse cx="98" cy="185" rx="17" ry="10" fill="#B98900" fill-opacity=".55" stroke="#2B241E" stroke-width="2"/>
+              <ellipse cx="215" cy="170" rx="17" ry="10" fill="#B98900" fill-opacity=".55" stroke="#2B241E" stroke-width="2"/>
+              <text class="s-txt" x="10" y="18">Cell membrane</text>
+              <path class="s-thin" d="M80 22 L96 40"/>
+              <text class="s-txt" x="160" y="131" text-anchor="middle" style="font-size:11px">Nucleus</text>
+              <text class="s-txt" x="10" y="246">Mitochondria</text>
+              <path class="s-thin" d="M76 240 L92 194"/>
+              <text class="s-txt" x="310" y="230" text-anchor="end" style="font-size:11px">No cell wall,</text>
+              <text class="s-txt" x="310" y="244" text-anchor="end" style="font-size:11px">no chloroplasts</text>
+            </svg>
+          </div>
+        </div>
+        <figcaption>A plant cell has a cell wall, chloroplasts, and a large vacuole. An animal cell has none of these.</figcaption>
+      </figure>
+
+      <h3>Levels of organization</h3>
+      <ol class="flow"><li>Cell</li><li>Tissue</li><li>Organ</li><li>Organ system</li><li>Organism</li></ol>
+
+      <h3>Using a microscope</h3>
+      <figure>
+        <svg viewBox="0 0 320 300" role="img" aria-label="Diagram of a compound microscope with labeled parts">
+          <path class="s-line" d="M120 30 L120 60"/>
+          <rect class="s-fill1" x="108" y="20" width="24" height="14" rx="3"/>
+          <path class="s-line" d="M120 60 C170 65 190 100 190 150 L190 170"/>
+          <rect class="s-fill1" x="150" y="90" width="16" height="20" rx="2" transform="rotate(20 158 100)"/>
+          <rect class="s-fill1" x="160" y="105" width="16" height="24" rx="2" transform="rotate(20 168 117)"/>
+          <rect class="s-fill3" x="90" y="185" width="140" height="14" rx="2"/>
+          <circle cx="160" cy="192" r="5" fill="#2B241E"/>
+          <rect class="s-fill1" x="180" y="200" width="20" height="10" rx="2"/>
+          <path class="s-line" d="M190 170 L190 260"/>
+          <rect class="s-fill2" x="140" y="260" width="100" height="16" rx="3"/>
+          <circle class="s-fill1" cx="165" cy="230" r="8"/>
+          <circle class="s-fill1" cx="165" cy="248" r="6"/>
+          <text class="s-txt" x="30" y="18">Eyepiece</text>
+          <path class="s-thin" d="M65 14 L112 27"/>
+          <text class="s-txt" x="220" y="70">Arm</text>
+          <path class="s-thin" d="M216 66 L178 68"/>
+          <text class="s-txt" x="222" y="112" style="font-size:12px">Objective lenses</text>
+          <path class="s-thin" d="M218 108 L178 108"/>
+          <text class="s-txt" x="14" y="196">Stage</text>
+          <path class="s-thin" d="M48 192 L88 192"/>
+          <text class="s-txt" x="214" y="214">Diaphragm</text>
+          <path class="s-thin" d="M210 210 L200 206"/>
+          <text class="s-txt" x="120" y="228" text-anchor="end">Coarse adjustment</text>
+          <path class="s-thin" d="M124 230 L155 230"/>
+          <text class="s-txt" x="120" y="252" text-anchor="end">Fine adjustment</text>
+          <path class="s-thin" d="M124 248 L157 248"/>
+          <text class="s-txt" x="150" y="295" text-anchor="middle">Base</text>
+        </svg>
+        <figcaption>Total magnification = eyepiece magnification &times; objective lens magnification.</figcaption>
+      </figure>
+      <ul class="facts">
+        <li>The <b>stage</b> holds the slide. The <b>diaphragm</b> controls how much light passes through.</li>
+        <li>Use the <b>coarse adjustment</b> knob to find the object first, then the <b>fine adjustment</b> knob for a sharp focus.</li>
+        <li>Example: a 10x eyepiece with a 40x objective lens gives a total magnification of <b>400x</b> (10 &times; 40).</li>
+      </ul>
+    </article>
+
+  </section>
+
+  <!-- =========================== QUIZ =========================== -->
+  <section class="panel" id="panel-quiz" role="tabpanel" aria-labelledby="tab-quiz" hidden>
+    <p class="quizintro">60 questions in four parts. Each part has 10 multiple choice items and 5 short answer items. Type your name at the top, answer everything, then press <b>Check my answers</b>. Multiple choice is graded for you. A parent or teacher checks the short answers.</p>
+    <p class="note">Parts 1 and 2 are based on the school's graded Earthquake and Volcano/Weathering quizzes. Part 3 uses the school's own Natural Resources questions with a standard science answer key (no completed key was provided). Part 4 (Cells and the Microscope) uses standard Grade 6 facts, since there was no quiz yet.</p>
+
+    <div class="toolbar"><button class="btn alt" type="button" data-print>Print this page</button></div>
+
+    <div id="results" hidden aria-live="polite"></div>
+    <div id="quizRoot"></div>
+
+    <div class="actions">
+      <button class="btn" type="button" id="checkBtn">Check my answers</button>
+      <button class="btn alt" type="button" id="resetBtn">Start over</button>
+    </div>
+  </section>
+  </main>
+
+  <footer>
+    Grade 6 Science, 1st Quarter. Sources: school Quiz #1 (Earthquakes and Earthquake Waves) and Quiz #2 &amp; #3 (Volcanoes, Effects of Volcanoes, Weathering), both with graded answer keys; the school's Natural Resources quiz questions (answer key not provided, so standard science answers are used); and standard Grade 6 facts for Cells, Organisms, and the Microscope, which had no quiz yet. Facts marked extra are standard facts added to complete the picture.
+  </footer>
+</div>
+
+<script>
+(function(){
+  /* ---------------- Tabs ---------------- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+  function selectTab(tab){
+    tabs.forEach(function(t){
+      var on = (t === tab);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    window.scrollTo(0, 0);
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener('click', function(){ selectTab(t); });
+    t.addEventListener('keydown', function(e){
+      if(e.key === 'ArrowRight' || e.key === 'ArrowLeft'){
+        var next = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+        next.focus(); selectTab(next);
+      }
+    });
+  });
+  Array.prototype.slice.call(document.querySelectorAll('[data-print]')).forEach(function(b){
+    b.addEventListener('click', function(){ window.print(); });
+  });
+
+  /* ---------------- Quiz data ---------------- */
+  var PARTS = [
+    {
+      title: 'Chapter 1: Earthquakes and Earthquake Waves', cls: 'p1',
+      mc: [
+        { q: 'An earthquake happens under the ocean floor. What might this cause along the nearby coast?',
+          o: ['A tsunami may form and strike the shore','The coastline is always completely safe','Nothing at all will change near the coast','The ocean floor disappears right away'], a: 0,
+          why: 'An undersea earthquake can push up a large, powerful wave called a tsunami.' },
+        { q: 'Town A is close to an earthquake\'s epicenter. Town B is far away. Both feel the same earthquake. What usually happens?',
+          o: ['Town A shakes more strongly because it is closer','Town B shakes more strongly because it is farther','Both towns shake exactly the same amount','Town A shakes less strongly because it is closer'], a: 0,
+          why: 'A location closer to the epicenter usually shakes more strongly than one farther away.' },
+        { q: 'A break in Earth\'s crust where rocks slide past each other is called a ______, and it matters because ______.',
+          o: ['fault; earthquakes happen along it','epicenter; it shows where waves start','crust; it holds Earth\'s surface','focus; it is the strongest point of shaking'], a: 0,
+          why: 'A fault is a break in the crust, and earthquakes happen along faults.' },
+        { q: 'In one type of fault, rocks slide sideways past each other instead of up or down. What type of fault is this?',
+          o: ['Strike-slip fault','Normal fault','Reverse fault','Volcanic fault'], a: 0,
+          why: 'A strike-slip fault is where rocks slide horizontally past each other.' },
+        { q: 'At a normal fault, rocks pull apart from each other. Over a long time, what is this likely to create?',
+          o: ['Valleys or basins','Mountains that rise higher','No change to the land at all','Land that folds sharply upward'], a: 0,
+          why: 'Normal faults pull rocks apart, which can form valleys or basins over time.' },
+        { q: 'At a reverse fault, rocks push together until one block is forced upward. What can this eventually build?',
+          o: ['Mountain ranges','Wide, flat basins','Roads that shift sideways','Land that sinks below sea level'], a: 0,
+          why: 'Reverse faults push rocks together, forcing land upward into mountains.' },
+        { q: 'The point on Earth\'s surface directly above where an earthquake begins is the epicenter. Why does this matter to rescuers?',
+          o: ['It is usually where damage is strongest','It is where the earthquake officially ends','It is always the safest place during shaking','It is where aftershocks always begin'], a: 0,
+          why: 'Damage from an earthquake is usually strongest at the epicenter.' },
+        { q: 'Love waves and Rayleigh waves travel along Earth\'s crust rather than through its interior. What are waves like this called?',
+          o: ['Surface waves','Body waves','Push-pull waves','Focus waves'], a: 0,
+          why: 'Waves that travel along the crust, like Love and Rayleigh waves, are called surface waves.' },
+        { q: 'Which seismic wave is the fastest and arrives first, moving the ground with a push-pull motion?',
+          o: ['P-wave','S-wave','Love wave','Rayleigh wave'], a: 0,
+          why: 'The P-wave is the fastest seismic wave and moves with a push-pull (compressional) motion.' },
+        { q: 'Which statement best explains the difference between magnitude and intensity?',
+          o: ['Magnitude is the size of the earthquake at its source, while intensity is the strength of shaking people feel in different places',
+              'Magnitude measures how much damage people feel, while intensity measures how strong the earthquake is',
+              'Magnitude changes from city to city, while intensity stays the same everywhere',
+              'Magnitude measures shaking, while intensity measures only sound waves'], a: 0,
+          why: 'Magnitude is fixed and describes the earthquake\'s size at its source. Intensity varies by location.' }
+      ],
+      sa: [
+        { q: 'What is an epicenter, and why is it important to rescuers?',
+          a: 'The epicenter is the point on Earth\'s surface directly above where the earthquake begins. It matters to rescuers because damage is usually strongest there.' },
+        { q: 'Name the three types of faults, and describe how the rocks move in each one.',
+          a: 'Normal fault: rocks pull apart. Reverse fault: rocks push together and one block rises. Strike-slip fault: rocks slide sideways past each other.' },
+        { q: 'What is the difference between body waves and surface waves? Name an example of each.',
+          a: 'Body waves travel through Earth\'s interior (examples: P-waves, S-waves). Surface waves travel along Earth\'s crust (examples: Love waves, Rayleigh waves).' },
+        { q: 'Explain the difference between magnitude and intensity in your own words.',
+          a: 'Magnitude is the fixed size of an earthquake at its source. Intensity is how strongly the shaking is felt in a particular place, and it can differ from place to place.' },
+        { q: 'About how many times more energy does a magnitude 7 earthquake release compared to a magnitude 5 earthquake? What is one reason two places can feel different intensity from the same earthquake?',
+          a: 'About 32 times more energy. Intensity can differ because of distance from the epicenter and how sturdy the buildings are.' }
+      ]
+    },
+    {
+      title: 'Chapter 2: Volcanoes and Weathering', cls: 'p2',
+      mc: [
+        { q: 'What is the name of the passage that runs from a volcano\'s magma chamber up to its opening at the top?',
+          o: ['Vent','Crater','Lava','Fault'], a: 0,
+          why: 'The vent is the opening that extends from the magma chamber to the top of the volcano.' },
+        { q: 'Which of these is NOT a way heat from inside the Earth reaches the surface?',
+          o: ['Rainfall','Hot springs','Geysers','Volcanoes'], a: 0,
+          why: 'Hot springs, geysers, and volcanoes all bring heat to the surface. Rainfall does not.' },
+        { q: 'A volcano has gently sloping sides and is built from thin, runny lava. What kind of volcano is this?',
+          o: ['Shield volcano','Cinder cone volcano','Composite cone volcano','Caldera'], a: 0,
+          why: 'Shield volcanoes have gentle slopes because their lava is thin and flows easily.' },
+        { q: 'Why are pyroclastic flows more dangerous than slow-moving lava flows?',
+          o: ['They travel quickly and burn everything in their path','They move slower than lava does','They only release harmless gases','They harden into rock before reaching anyone'], a: 0,
+          why: 'Pyroclastic flows move fast and burn everything in their path, unlike slower lava flows.' },
+        { q: 'What is the name for the chain of volcanoes that circles the edge of the Pacific Plate?',
+          o: ['Ring of Fire','Circle of Fire','Ring of Lava','Circle of Magma'], a: 0,
+          why: 'This chain of volcanoes around the Pacific Plate is called the Ring of Fire.' },
+        { q: 'Which type of eruption is the quietest, producing a fountain of lava that runs down the volcano\'s sides?',
+          o: ['Hawaiian eruption','Pelean eruption','Vulcanian eruption','Strombolian eruption'], a: 0,
+          why: 'A Hawaiian eruption is quiet and produces a lava fountain that flows down the sides.' },
+        { q: 'Which type of eruption is violent and blasts lava, ash, cinders, and gas high into the air?',
+          o: ['Vulcanian eruption','Hawaiian eruption','Strombolian eruption','Pelean eruption'], a: 0,
+          why: 'A Vulcanian eruption is a violent eruption that blasts lava, ash, cinders, and gas into the air.' },
+        { q: 'Which type of eruption is the most violent, sending a glowing avalanche of hot ash and gas down the volcano\'s slope?',
+          o: ['Pelean eruption','Vulcanian eruption','Hawaiian eruption','Strombolian eruption'], a: 0,
+          why: 'A Pelean eruption is the most violent type, producing a deadly avalanche of hot ash and gas.' },
+        { q: 'A rock breaks into smaller pieces, but its minerals stay exactly the same. What kind of weathering is this?',
+          o: ['Physical weathering','Chemical weathering','Erosion','Deposition'], a: 0,
+          why: 'Physical weathering breaks a rock apart without changing what it is made of.' },
+        { q: 'An old iron gate slowly turns reddish-brown after years outdoors. What process caused this?',
+          o: ['Oxidation','Ice wedging','Deposition','Carbonation'], a: 0,
+          why: 'Oxidation is a chemical reaction with oxygen that can turn iron reddish-brown (rust).' }
+      ],
+      sa: [
+        { q: 'What is the difference between physical weathering and chemical weathering? Give one example of each.',
+          a: 'Physical weathering breaks a rock into smaller pieces without changing its minerals (example: ice wedging). Chemical weathering changes the minerals in the rock (example: oxidation/rusting).' },
+        { q: 'Put these eruption types in order from quietest to most violent: Vulcanian, Hawaiian, Pelean, Strombolian.',
+          a: 'Hawaiian, Strombolian, Vulcanian, Pelean.' },
+        { q: 'Explain how ice wedging breaks apart a rock.',
+          a: 'Water seeps into a crack in the rock, freezes, and expands, which slowly splits the rock apart.' },
+        { q: 'What mainly shapes valleys, cliffs, and canyons over a long period of time?',
+          a: 'Rain, ice, and snow breaking down rock (weathering, along with erosion).' },
+        { q: 'Why do scientists say volcanologists and seismologists need to work together? Give an example.',
+          a: 'Volcanic activity and earthquakes are related, so the two kinds of scientists share information. Example: monitoring volcanic tremors to warn communities of a possible eruption.' }
+      ]
+    },
+    {
+      title: 'Chapter 3: Natural Resources', cls: 'p3',
+      mc: [
+        { q: 'A fuel that forms when the remains of plants and animals are buried quickly and change underground over a very long time is called a ______.',
+          o: ['Fossil fuel','Mineral','Refinery','Nuclear fuel'], a: 0,
+          why: 'Coal, petroleum, and natural gas are fossil fuels, formed from buried remains of plants and animals.' },
+        { q: 'A factory that separates crude oil into different products, like gasoline, is called a ______.',
+          o: ['Refinery','Mineral','Fossil fuel','Reservoir'], a: 0,
+          why: 'A refinery separates crude oil into different products.' },
+        { q: 'Which mineral is used to produce nuclear energy?',
+          o: ['Uranium','Coal','Petroleum','Natural gas'], a: 0,
+          why: 'Uranium is the mineral used to produce nuclear energy.' },
+        { q: 'A solid substance that is found naturally in the Earth is called a ______.',
+          o: ['Mineral','Fossil fuel','Refinery','Alloy'], a: 0,
+          why: 'A mineral is a solid substance found naturally in the Earth.' },
+        { q: 'True or False: A nonrenewable resource can be replaced by nature in a relatively short period of time.',
+          o: ['False','True'], a: 0,
+          why: 'Nonrenewable resources take an extremely long time to form, so they cannot be replaced quickly.' },
+        { q: 'True or False: Malleable metals are able to be dented or shaped.',
+          o: ['True','False'], a: 0,
+          why: 'Malleable means able to be hammered, dented, or shaped without breaking.' },
+        { q: 'Which of these energy resources is NOT a fossil fuel?',
+          o: ['Hydroelectric energy','Coal','Petroleum','Natural gas'], a: 0,
+          why: 'Hydroelectric energy comes from moving water, not from ancient buried remains.' },
+        { q: 'What is a disadvantage shared by wind energy and solar energy?',
+          o: ['They both need large areas of land','They both cause heavy air pollution','They both use large amounts of water','They both require radioactive material'], a: 0,
+          why: 'Both wind farms and solar farms need large areas of land to generate enough energy.' },
+        { q: 'Which of these is NOT an advantage of using windmills for wind energy?',
+          o: ['They need a steady, dependable wind','They do not cause pollution','They are a renewable resource','They are relatively low-maintenance once running'], a: 0,
+          why: 'Needing a steady wind is a limitation, not an advantage, since wind is not always available.' },
+        { q: 'Which of these is an advantage of geothermal energy?',
+          o: ['Its hot water can be used for recreation, such as hot springs','It produces radioactive hazards','It is always inexpensive to build','It causes heavy water pollution'], a: 0,
+          why: 'Geothermal plants can produce hot water that is used for recreation, like hot springs and spas.' }
+      ],
+      sa: [
+        { q: 'What is the difference between a renewable resource and a nonrenewable resource? Give one example of each.',
+          a: 'A renewable resource can be replaced by nature in a relatively short time (example: soil). A nonrenewable resource takes an extremely long time to form and cannot be replaced quickly (example: coal).' },
+        { q: 'Name the three fossil fuels mentioned in this lesson.',
+          a: 'Coal, petroleum, and natural gas.' },
+        { q: 'What does a refinery do?',
+          a: 'A refinery separates crude oil into different products, such as gasoline.' },
+        { q: 'Is soil a renewable or a nonrenewable resource? Explain your answer in one sentence.',
+          a: 'Renewable \u2014 nature can rebuild and replace soil over a relatively short time, unlike a fossil fuel.' },
+        { q: 'Name one advantage and one disadvantage of wind energy.',
+          a: 'Advantage: it is renewable and does not cause pollution. Disadvantage: it needs a steady wind and can require large areas of land.' }
+      ]
+    },
+    {
+      title: 'Chapter 4: Cells and Organisms; the Microscope', cls: 'p4',
+      mc: [
+        { q: 'What is the basic building block of all living things?',
+          o: ['The cell','The nucleus','The organ','The tissue'], a: 0,
+          why: 'The cell is the basic building block of all living things.' },
+        { q: 'An organism made up of only one cell, like an amoeba, is called ______.',
+          o: ['Unicellular','Multicellular','Nuclear','Cellular'], a: 0,
+          why: 'A unicellular organism is made of just one cell.' },
+        { q: 'Which part of a plant cell allows it to make its own food using sunlight?',
+          o: ['Chloroplast','Nucleus','Cell membrane','Mitochondria'], a: 0,
+          why: 'The chloroplast captures sunlight so the plant cell can make its own food.' },
+        { q: 'Which cell part acts as the cell\'s control center and holds its genetic material?',
+          o: ['Nucleus','Cytoplasm','Vacuole','Cell wall'], a: 0,
+          why: 'The nucleus is the control center that holds the cell\'s genetic material.' },
+        { q: 'Which structure is found in plant cells but NOT in animal cells, giving the cell a rigid shape?',
+          o: ['Cell wall','Cell membrane','Nucleus','Mitochondria'], a: 0,
+          why: 'The cell wall is a rigid layer found only in plant cells, not animal cells.' },
+        { q: 'Which organelle releases energy for the cell to use?',
+          o: ['Mitochondria','Nucleus','Vacuole','Chloroplast'], a: 0,
+          why: 'Mitochondria release energy for the cell to use.' },
+        { q: 'Which sequence correctly lists the levels of organization from smallest to largest?',
+          o: ['Cell \u2192 tissue \u2192 organ \u2192 organ system \u2192 organism',
+              'Organism \u2192 organ system \u2192 organ \u2192 tissue \u2192 cell',
+              'Tissue \u2192 cell \u2192 organ \u2192 organism \u2192 organ system',
+              'Cell \u2192 organ \u2192 tissue \u2192 organism \u2192 organ system'], a: 0,
+          why: 'The order from smallest to largest is cell, tissue, organ, organ system, organism.' },
+        { q: 'Which part of a microscope holds the glass slide in place for viewing?',
+          o: ['The stage','The eyepiece','The base','The arm'], a: 0,
+          why: 'The stage is the flat platform that holds the slide.' },
+        { q: 'Which knob should you use to bring an object into sharp, fine focus after first finding it?',
+          o: ['The fine adjustment knob','The coarse adjustment knob','The diaphragm','The eyepiece'], a: 0,
+          why: 'The fine adjustment knob sharpens the focus after the coarse adjustment knob finds the object.' },
+        { q: 'A microscope has a 10x eyepiece and a 40x objective lens in place. What is the total magnification?',
+          o: ['400x','50x','4x','40x'], a: 0,
+          why: 'Total magnification is eyepiece magnification times objective magnification: 10 \u00d7 40 = 400.' }
+      ],
+      sa: [
+        { q: 'Name one part found in a plant cell but not in an animal cell, and explain what it does.',
+          a: 'Cell wall (gives the cell support and shape) or chloroplast (makes food using sunlight). Either answer is correct.' },
+        { q: 'What is the difference between a unicellular organism and a multicellular organism? Give an example of each.',
+          a: 'A unicellular organism is made of one cell (example: amoeba or bacterium). A multicellular organism is made of many cells working together (example: a human or a plant).' },
+        { q: 'List the levels of organization from a single cell up to a whole organism.',
+          a: 'Cell, tissue, organ, organ system, organism.' },
+        { q: 'Name two parts of a microscope and what each one does.',
+          a: 'Any two: eyepiece (the lens you look through), objective lenses (magnify the object), stage (holds the slide), diaphragm (controls light), coarse/fine adjustment knobs (focus the image), base (supports the microscope).' },
+        { q: 'A microscope\'s eyepiece is 10x and its objective lens is 10x. What is the total magnification? Show how you got your answer.',
+          a: '100x, because 10 \u00d7 10 = 100.' }
+      ]
+    }
+  ];
+
+  var root = document.getElementById('quizRoot');
+  var results = document.getElementById('results');
+  var checkBtn = document.getElementById('checkBtn');
+  var resetBtn = document.getElementById('resetBtn');
+  var nameInput = document.getElementById('studentName');
+  var checked = false;
+  var mcScores = PARTS.map(function(){ return 0; });
+
+  function shuffle(a){
+    var arr = a.slice();
+    for(var i = arr.length - 1; i > 0; i--){
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+    }
+    return arr;
+  }
+  function esc(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function render(){
+    checked = false;
+    results.hidden = true; results.innerHTML = '';
+    checkBtn.disabled = false;
+    var n = 0, html = '';
+    PARTS.forEach(function(part, pi){
+      html += '<section class="part ' + part.cls + '"><h3>Part ' + (pi + 1) + ': ' + esc(part.title) + '</h3>';
+      html += '<h4>Multiple choice: pick the best answer</h4>';
+      part.mc.forEach(function(item, qi){
+        n++;
+        var order = shuffle(item.o.map(function(t, i){ return {t: t, ok: i === item.a}; }));
+        html += '<fieldset class="q" id="mc-' + pi + '-' + qi + '"><legend><span class="num">' + n + '</span>' + esc(item.q) + '</legend><div class="opts">';
+        order.forEach(function(opt){
+          html += '<label class="opt"><input type="radio" name="mc-' + pi + '-' + qi + '" data-correct="' + (opt.ok ? 1 : 0) + '"><span>' + esc(opt.t) + '</span></label>';
+        });
+        html += '</div><div class="feedback" hidden></div></fieldset>';
+      });
+      html += '<h4>Short answer: write your answer in a sentence or two</h4>';
+      part.sa.forEach(function(item, si){
+        n++;
+        html += '<div class="sa" id="sa-' + pi + '-' + si + '"><label class="stem" for="ta-' + pi + '-' + si + '"><span class="num">' + n + '</span>' + esc(item.q) + '</label>';
+        html += '<textarea id="ta-' + pi + '-' + si + '" rows="3"></textarea>';
+        html += '<div class="suggest" hidden><b>Suggested answer:</b> ' + esc(item.a);
+        if(item.n){ html += '<span class="src">' + esc(item.n) + '</span>'; }
+        html += '<label><input type="checkbox" class="mark-sa" data-part="' + pi + '"> Parent or teacher: this answer is correct</label></div></div>';
+      });
+      html += '</section>';
+    });
+    root.innerHTML = html;
+  }
+
+  function saMarked(pi){
+    return document.querySelectorAll('.mark-sa[data-part="' + pi + '"]:checked').length;
+  }
+  function sum(arr){ return arr.reduce(function(a,b){ return a+b; }, 0); }
+
+  var MC_PER_PART = 10, SA_PER_PART = 5;
+
+  function buildResults(unanswered){
+    var totalMC = sum(mcScores);
+    var totalSA = sum(PARTS.map(function(_, pi){ return saMarked(pi); }));
+    var maxMC = PARTS.length * MC_PER_PART;
+    var maxSA = PARTS.length * SA_PER_PART;
+    var pct = Math.round(totalMC / maxMC * 100);
+    var msg = pct >= 90 ? 'Outstanding! You really know your science.'
+            : pct >= 75 ? 'Great job! Look at the missed items and try them again.'
+            : pct >= 50 ? 'Good effort. Read the Reviewer again, then try the quiz once more.'
+            : 'Keep going! Read the Reviewer, then press Start over and try again.';
+    var name = nameInput.value.trim();
+    var h = '<h3 class="stamp"></h3>';
+    h += '<div class="bigscore" id="bigscore"></div>';
+    h += '<p>' + esc(msg) + '</p>';
+    if(unanswered){ h += '<p class="fine">' + unanswered + ' multiple choice item' + (unanswered === 1 ? ' was' : 's were') + ' left blank and counted as missed.</p>'; }
+    h += '<div class="rows">';
+    PARTS.forEach(function(part, pi){
+      h += '<div class="row ' + part.cls + '"><span>' + esc(part.title) + '</span><div class="bar"><span id="bar-' + pi + '" style="width:' + (mcScores[pi] * 10) + '%"></span></div><b>' + mcScores[pi] + ' / ' + MC_PER_PART + '</b></div>';
+    });
+    h += '</div>';
+    h += '<p><b>Short answers:</b> read each suggested answer below your writing. A parent or teacher ticks the box when the answer is right. Short answer score: <b id="saScore">' + totalSA + ' / ' + maxSA + '</b></p>';
+    h += '<p class="fine">Total with short answers so far: <b id="grandScore">' + (totalMC + totalSA) + ' / ' + (maxMC + maxSA) + '</b></p>';
+    results.innerHTML = h;
+    results.querySelector('h3').textContent = name ? 'Quiz checked, ' + name + '!' : 'Quiz checked!';
+    document.getElementById('bigscore').textContent = 'Multiple choice: ' + totalMC + ' / ' + maxMC;
+  }
+
+  function refreshSA(){
+    if(!checked) return;
+    var totalSA = sum(PARTS.map(function(_, pi){ return saMarked(pi); }));
+    var totalMC = sum(mcScores);
+    var maxMC = PARTS.length * MC_PER_PART, maxSA = PARTS.length * SA_PER_PART;
+    document.getElementById('saScore').textContent = totalSA + ' / ' + maxSA;
+    document.getElementById('grandScore').textContent = (totalMC + totalSA) + ' / ' + (maxMC + maxSA);
+  }
+
+  function check(){
+    if(checked) return;
+    checked = true;
+    var unanswered = 0;
+    PARTS.forEach(function(part, pi){
+      var s = 0;
+      part.mc.forEach(function(item, qi){
+        var block = document.getElementById('mc-' + pi + '-' + qi);
+        var inputs = Array.prototype.slice.call(block.querySelectorAll('input'));
+        var chosen = inputs.filter(function(i){ return i.checked; })[0];
+        inputs.forEach(function(i){
+          var lab = i.closest('label');
+          i.disabled = true;
+          if(i.dataset.correct === '1'){
+            lab.classList.add('is-correct');
+            lab.insertAdjacentHTML('beforeend', '<span class="mark">\u2713 correct answer</span>');
+          } else if(i === chosen){
+            lab.classList.add('is-wrong');
+            lab.insertAdjacentHTML('beforeend', '<span class="mark">\u2717 your answer</span>');
+          }
+        });
+        var fb = block.querySelector('.feedback');
+        fb.hidden = false;
+        if(chosen && chosen.dataset.correct === '1'){
+          s++;
+          fb.className = 'feedback ok';
+          fb.textContent = 'Correct! ' + item.why;
+        } else if(!chosen){
+          unanswered++;
+          fb.className = 'feedback skip';
+          fb.textContent = 'Not answered. ' + item.why;
+        } else {
+          fb.className = 'feedback no';
+          fb.textContent = 'Not quite. ' + item.why;
+        }
+      });
+      mcScores[pi] = s;
+      part.sa.forEach(function(item, si){
+        var box = document.getElementById('sa-' + pi + '-' + si);
+        box.querySelector('.suggest').hidden = false;
+        box.querySelector('textarea').readOnly = true;
+      });
+    });
+    buildResults(unanswered);
+    results.hidden = false;
+    checkBtn.disabled = true;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    results.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'});
+  }
+
+  document.addEventListener('change', function(e){
+    if(e.target.classList && e.target.classList.contains('mark-sa')){ refreshSA(); }
+  });
+  checkBtn.addEventListener('click', check);
+  resetBtn.addEventListener('click', function(){
+    render();
+    window.scrollTo(0, 0);
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
